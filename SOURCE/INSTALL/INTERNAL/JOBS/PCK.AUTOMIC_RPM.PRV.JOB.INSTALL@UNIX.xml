@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<JOBS_UNIX AttrType="UNIX" name="PCK.AUTOMIC_RPM.PRV.JOB.INSTALL@UNIX">
+<XHEADER state="1">
+<Title/>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<Active>1</Active>
+<OH_SubType/>
+<CustomAttributes KeyListID="0" dataRequestID="0"/>
+</XHEADER>
+<OUTPUTREG state="1">
+<FileReg/>
+</OUTPUTREG>
+<SYNCREF state="1">
+<Syncs/>
+</SYNCREF>
+<ATTR_JOBS state="1">
+<Queue>CLIENT_QUEUE</Queue>
+<StartType/>
+<HostDst>|&lt;UNIX&gt;|HOST</HostDst>
+<HostATTR_Type>UNIX</HostATTR_Type>
+<CodeName/>
+<Login/>
+<IntAccount/>
+<ExtRepDef>1</ExtRepDef>
+<ExtRepAll>0</ExtRepAll>
+<ExtRepNone>0</ExtRepNone>
+<AutoDeactNo>1</AutoDeactNo>
+<AutoDeact1ErrorFree>0</AutoDeact1ErrorFree>
+<AutoDeactErrorFree>0</AutoDeactErrorFree>
+<DeactWhen/>
+<DeactDelay>0</DeactDelay>
+<AutoDeactAlways>0</AutoDeactAlways>
+<AttDialog>0</AttDialog>
+<ActAtRun>1</ActAtRun>
+<Consumption>0</Consumption>
+<UC4Priority>0</UC4Priority>
+<MaxParallel2>0</MaxParallel2>
+<MpElse1>1</MpElse1>
+<MpElse2>0</MpElse2>
+<TZ/>
+</ATTR_JOBS>
+<ATTR_UNIX state="1">
+<OutputDb>1</OutputDb>
+<OutputDbErr>0</OutputDbErr>
+<OutputFile>0</OutputFile>
+<ShellScript>1</ShellScript>
+<Command>0</Command>
+<Priority>0</Priority>
+<Shell>sh</Shell>
+<ShellOptions/>
+<Com/>
+</ATTR_UNIX>
+<RUNTIME state="1">
+<MaxRetCode>0</MaxRetCode>
+<MrcExecute/>
+<MrcElseE>0</MrcElseE>
+<FcstStatus>0|U00000000 ??? ""</FcstStatus>
+
+<ErtMethodDef>1</ErtMethodDef>
+<ErtMethodFix>0</ErtMethodFix>
+<ErtFix>0</ErtFix>
+<ErtDynMethod>2|Average</ErtDynMethod>
+<ErtMethodDyn>0</ErtMethodDyn>
+<ErtCnt>0</ErtCnt>
+<ErtCorr>0</ErtCorr>
+<ErtIgn>0</ErtIgn>
+<ErtIgnFlg>0</ErtIgnFlg>
+<ErtMinCnt>0</ErtMinCnt>
+<MrtMethodNone>1</MrtMethodNone>
+<MrtMethodFix>0</MrtMethodFix>
+<MrtFix>0</MrtFix>
+<MrtMethodErt>0</MrtMethodErt>
+<MrtErt>0</MrtErt>
+<MrtMethodDate>0</MrtMethodDate>
+<MrtDays>0</MrtDays>
+<MrtTime>00:00</MrtTime>
+<MrtTZ/>
+<SrtMethodNone>1</SrtMethodNone>
+<SrtMethodFix>0</SrtMethodFix>
+<SrtFix>0</SrtFix>
+<SrtMethodErt>0</SrtMethodErt>
+<SrtErt>0</SrtErt>
+<MrtCancel>0</MrtCancel>
+<MrtExecute>0</MrtExecute>
+<MrtExecuteObj/>
+</RUNTIME>
+<DYNVALUES state="1">
+<dyntree>
+<node content="1" id="VALUE" name="Variables" parent="" type="VALUE">
+<VALUE state="1">
+<Values/>
+<Mode>0</Mode>
+</VALUE>
+</node>
+</dyntree>
+</DYNVALUES>
+<ROLLBACK state="1">
+<RollbackFlag>0</RollbackFlag>
+<CBackupObj/>
+<CRollbackObj/>
+<FBackupPath/>
+<FDeleteBefore>0</FDeleteBefore>
+<FInclSubDirs>0</FInclSubDirs>
+</ROLLBACK>
+<PRE_SCRIPT mode="1" replacementmode="1" state="1">
+<PSCRI><![CDATA[:INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.PREPARE_JOB]]></PSCRI>
+</PRE_SCRIPT>
+<SCRIPT mode="1" state="1">
+<MSCRI><![CDATA[:INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.SUDO_EXECUTION
+
+:set &mode# = "--install"
+:if &UC4RB_RPM_UPGRADE# = "YES"
+:  set &mode# = "--upgrade"
+:endif
+
+:if &UC4RB_RPM_INSTALL_PREFIX# <> ""
+:  set &prefix# = str_cat('--prefix "', &UC4RB_RPM_INSTALL_PREFIX#)
+:  set &prefix# = str_cat(&prefix#, '"')
+:endif
+
+:if &UC4RB_RPM_INSTALL_RELOCATE# <> ""
+:  set &relocate# = ""
+:  set &rest# = &UC4RB_RPM_INSTALL_RELOCATE#
+:  set &pos# = str_find(&rest#, ",")
+:  while &pos# > 0
+:    set &end# = sub(&pos#, 1)
+:    set &part# = substr(&rest#, 1, &end#)
+:    set &relocate# = str_cat(&relocate#, " --relocate")
+:    set &relocate# = str_cat(&relocate#, &part#)
+:    set &start# = add(&pos#, 1)
+:    set &rest# = substr(&rest#, &start#)
+:    set &pos# = str_find(&rest#, ",")
+:  endwhile
+:endif
+
+:set &allfiles# = ""
+:if &UC4RB_RPM_ALL_FILES# = "YES"
+:  set &allfiles# = "--allfiles"
+:endif
+
+:set &excludepath# = ""
+:if &UC4RB_RPM_EXCLUDE_PATH# <> ""
+:  set &excludepath# = str_cat('--excludepath "', &UC4RB_RPM_EXCLUDE_PATH#)
+:  set &excludepath# = str_cat(&excludepath#, '"')
+:endif
+
+:set &excludedocs# = ""
+:if &UC4RB_RPM_EXCLUDE_DOCS# = "YES"
+:  set &excludedocs# = "--excludedocs"
+:endif
+
+:set &replacefiles# = ""
+:if &UC4RB_RPM_REPLACE_FILES# = "YES"
+:  set &replacefiles# = "--replacefiles"
+:endif
+
+:set &replacepkgs# = ""
+:if &UC4RB_RPM_REPLACE_PACKAGES# = "YES"
+:  set &replacepkgs# = "--replacepkgs"
+:endif
+
+:set &oldpackage# = ""
+:if &UC4RB_RPM_REPLACE_OLD_PACKAGES# = "YES"
+:  set &oldpackage# = "--oldpackage"
+:endif
+
+:set &ignoresize# = ""
+:if  &UC4RB_RPM_IGNORE_SPACE_CHECK# = "YES"
+:  set &ignoresize# = "--ignoresize"
+:endif
+
+:set &ignorearch# = ""
+:if &UC4RB_RPM_IGNORE_ARCH_CHECK# = "YES"
+:  set &ignorearch# = "--ignorearch"
+:endif
+
+:set &ignoreos# = ""
+:if &UC4RB_RPM_IGNORE_OS_TYPE_CHECK# = "YES"
+:  set &ignoreos# = "--ignoreos"
+:endif
+
+:set &justdb# = ""
+:if &UC4RB_RPM_ONLY_DB_UPDATE# = "YES"
+:  set &justdb# = "--justdb"
+:endif
+
+:set &nodigest# = ""
+:if &UC4RB_RPM_IGNORE_DIGEST# = "YES"
+:  set &nodigest# = "--nodigest"
+:endif
+
+:set &nomanifest# = ""
+:if &UC4RB_RPM_IGNORE_MANIFEST# = "YES"
+:  set &nomanifest# = "--nomanifest"
+:endif
+
+:set &nosignature# = ""
+:if &UC4RB_RPM_IGNORE_HDR_SIGN# = "YES"
+:  set &nosignature# = "--nosignature"
+:endif
+
+:set &nodeps# = ""
+:if &UC4RB_RPM_IGNORE_DEP_CHECK# = "YES"
+:  set &nodeps# = "--nodeps"
+:endif
+
+:set &noorder# = ""
+:if &UC4RB_RPM_DONT_REORDER# = "YES"
+:  set &noorder# = "--noorder"
+:endif
+
+:set &noscripts# = ""
+:if &UC4RB_RPM_NO_SCRIPTS# = "YES"
+:  set &noscripts# = "--noscripts"
+:endif
+
+:set &nopre# = ""
+:if &UC4RB_RPM_NO_PRE_SCRIPT# = "YES"
+:  set &nopre# = "--nopre"
+:endif
+
+:set &nopost# = ""
+:if &UC4RB_RPM_NO_POST_SCRIPT# = "YES"
+:  set &nopost# = "--nopost"
+:endif
+
+:set &nopreun# = ""
+:if &UC4RB_RPM_NO_PREUN_SCRIPT# = "YES"
+:  set &nopreun# = "--nopreun"
+:endif
+
+:set &nopostun# = ""
+:if &UC4RB_RPM_NO_POSTUN_SCRIPT# = "YES"
+:  set &nopostun# = "--nopostun"
+:endif
+
+:set &notriggers# = ""
+:if &UC4RB_RPM_NO_TRIGGERS# = "YES"
+:  set &notriggers# = "--notriggers"
+:endif
+
+:set &notriggerin# = ""
+:if &UC4RB_RPM_NO_TRIGGER_IN# = "YES"
+:  set &notriggerin# = "--notriggerin"
+:endif
+
+:set &notriggerun# = ""
+:if &UC4RB_RPM_NO_TRIGGER_UN# = "YES"
+:  set &notriggerun# = "--notriggerun"
+:endif
+
+:set &notriggerpostun# = ""
+:if &UC4RB_RPM_NO_TRIGGER_POSTUN# = "YES"
+:  set &notriggerpostun# = "--notriggerpostun"
+:endif
+
+:set &test# = ""
+:if &UC4RB_RPM_TEST_ONLY# = "YES"
+:  set &test# = "--test"
+:endif
+
+:set &host# = ""
+:if &UC4RB_RPM_DOWNLOAD_HOST# <> ""
+:  set &host# = str_cat(&UC4RB_RPM_DOWNLOAD_HOST#, "/")
+:endif
+
+:if &UC4RB_RPM_DOWNLOAD_PORT# <> 0
+:  set &host# = str_cat(&host#, ":")
+:  set &host# = str_cat(&host#, &UC4RB_RPM_DOWNLOAD_PORT#)
+:endif
+
+:set &user# = ""
+:if &UC4RB_RPM_DOWNLOAD_FTP_USER# <> ""
+:  set &user# = &UC4RB_RPM_DOWNLOAD_FTP_USER#
+:  if &UC4RB_RPM_DOWNLOAD_FTP_PWD# <> ""
+:    set &user# = str_cat(&user#, ":")
+:    set &user# = str_cat(&user#, &UC4RB_RPM_DOWNLOAD_FTP_PWD#)
+:  endif
+:  set &user# = str_cat(&user#, "@")
+:endif
+
+:set &ftpproxy# = ""
+:set &ftpport# = ""
+:if &UC4RB_RPM_FTP_PROXY_HOST# <> ""
+:  set &ftpproxy# = str_cat("--ftpproxy ", &UC4RB_RPM_FTP_PROXY_HOST#)
+:  set &ftpport# = str_cat("--ftpport ", &UC4RB_RPM_FTP_PROXY_PORT#)
+:endif
+
+:set &httpproxy# = ""
+:set &httpport# = ""
+:if &UC4RB_RPM_HTTP_PROXY_HOST# <> ""
+:  set &httpproxy# = str_cat("--httpproxy ", &UC4RB_RPM_HTTP_PROXY_HOST#)
+:  set &httpport# = str_cat("--httpport ", &UC4RB_RPM_HTTP_PROXY_PORT#)
+:endif
+
+:if &UC4RB_RPM_DOWNLOAD_VIA_FTP# = "YES"
+:  set &url# = str_cat("ftp://", &user#)
+:  set &url# = str_cat(&url#, &host#)
+:  set &url# = str_cat(&url#, &UC4RB_RPM_FILE#)
+:  set &UC4RB_RPM_FILE# = &url#
+:endif
+
+:if &UC4RB_RPM_DOWNLOAD_VIA_HTTP# = "YES"
+:  set &url# = str_cat("http://", &host#)
+:  set &url# = str_cat(&url#, &UC4RB_RPM_FILE#)
+:  set &UC4RB_RPM_FILE# = &url#
+:endif
+
+export LC_ALL=C
+:JCL_CONCAT_CHAR "\"
+output=`rpm 2>&1 &mode# &allfiles# &excludepath# &excludedocs# &replacefiles# &replacepkgs# &oldpackage# &ignoresize# \
+  &ignorearch# &ignoreos# &justdb# &nodigest# &nomanifest# &nosignature# &nodeps# &noorder# &noscripts# \
+  &nopre# &nopost# &nopreun# &nopostun# &notriggers# &notriggerin# &notriggerun# &notriggerpostun# &test# \
+  &ftpproxy# &ftpport# &httpproxy# &httpport# \
+  &UC4RB_RPM_FILE#`
+
+if [ $? -eq 0 ]; then
+  echo "Package successfully installed."
+  exit 0
+fi
+
+if echo "$output" | grep -q "package .* is already installed"; then
+: if &UC4RB_RPM_FAIL_IF_INSTALLED# = "YES"
+    echo "Parameter 'Fail if installed' is set to 'yes' and the package with the same version is already installed."
+    exit 3
+: else
+    echo "Package already installed."
+    exit 0
+: endif
+elif echo "$output" | grep -q "error: open of .* failed"; then
+  echo "Authenticate failed with FTP/HTTP server when trying to download rpm package:"
+  echo "$output"
+  exit 1
+elif echo "$output" | grep -q "error: Failed dependencies"; then
+  echo "Install/upgrade not possible, because dependencies are not fulfilled."
+  echo "$output"
+  exit 2
+else
+  echo "Other failure during the install/upgrade process:"
+  echo "$output"
+  exit 4
+fi
+
+]]></MSCRI>
+</SCRIPT>
+<OUTPUTSCAN state="1">
+<Inherit>N</Inherit>
+<filterobjects/>
+<HostFsc/>
+<LoginFsc/>
+</OUTPUTSCAN>
+<POST_SCRIPT mode="1" replacementmode="1" state="1">
+<OSCRI/>
+</POST_SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</JOBS_UNIX>
+</uc-export>
