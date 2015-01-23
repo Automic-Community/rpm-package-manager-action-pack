@@ -182,23 +182,28 @@ echo "### end rpm output ###"
 <OSCRI><![CDATA[:SET &variableName# = "UC4_RV.PM_RPM.QUERY_&$ACTIVATOR_RUNID#"
 :SET &variablePath# = "INTERNAL/RUNBOOK/PACKAGE_MANAGER/RPM/VARIABLE"
 :INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.CREATE_PASS_VALUES_VARIABLE
-:set &output# = 0
+:SET &output# = 0
 
-:set &cnt# = 0
+:SET &cnt# = 0
 :SET &hnd# = PREP_PROCESS_REPORT(, , "REP", "*")
+!Create output process
+:SET &out_var_process# = CREATE_PROCESS(NEW)
 :PROCESS &hnd#
-:  set &line# = get_process_line(&hnd#)
-:  if &line# = "### end rpm output ###"
-:    set &output# = 0
-:  endif
-:  if &output# = 1
-:    set &cnt# = add(&cnt#, 1)
-:    put_var &variableName#, &cnt#, &line#
-:  endif
-:  if &line# = "### begin rpm output ###"
-:    set &output# = 1
-:  endif
+:  SET &line# = get_process_line(&hnd#)
+:  IF &line# = "### end rpm output ###"
+:    SET &output# = 0
+:  ENDIF
+:  IF &output# = 1
+:    SET &cnt# = add(&cnt#, 1)
+!Add new line for output process
+:    SET &RET# = PUT_PROCESS_LINE(&out_var_process#, "&cnt#,&line#", ",")
+:  ENDIF
+:  IF &line# = "### begin rpm output ###"
+:    SET &output# = 1
+:  ENDIF
 :ENDPROCESS
+!Export output process to temp variable
+:PUT_VAR_PROCESS &variableName#, &out_var_process#
 :PSET &UC4RB_OUT_RPM_QUERY# = "&variableName#"]]></OSCRI>
 </POST_SCRIPT>
 <DOCU_Docu state="1" type="text">
