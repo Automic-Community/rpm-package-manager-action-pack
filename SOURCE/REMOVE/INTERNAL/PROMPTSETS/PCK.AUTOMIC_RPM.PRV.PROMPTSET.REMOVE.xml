@@ -10,10 +10,186 @@
 <DESIGNER/>
 </PROMPTDESIGNER>
 <PROMPTSETXUI state="1">
-<XUIEDITOR><![CDATA[<dialog height="506" icon="PRPT" id="PRPTS" left="279" top="4" width="420"><readpanel fill="b" id="PRPTBOX" nl="1" scroll="v" text="Parameters"><properties><entry name="text">Parameters</entry><entry name="modifiable">0</entry></properties><text enabled="1" fill="b" focus="0" id="UC4RB_PACKAGE_NAMEs.00" inputassistance="0" len="" nl="1" regex="" separator=";" showaspassword="0" text="Package name " tooltip="Name of the rpm package to remove. Note, this is not the file name." upper="0" required="0" alt="1" multiline="0" multilineIcon="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant><properties><entry listparam="C" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry><entry name="text">Package name	</entry><entry name="multiselect">0</entry><entry name="separator">;</entry><entry name="len"/><entry name="quotes"/><entry name="id">UC4RB_PACKAGE_NAMEs.00</entry><entry name="inputassistance">0</entry><entry name="enabled">0</entry><entry name="upper">0</entry><entry name="focus">0</entry><entry name="showaspassword">0</entry><entry name="tooltip">Name of the rpm package to remove. Note, this is not the file name.</entry><entry name="customfield"/><entry name="modifiable">1</entry><entry name="regex"/><entry name="required">1</entry><entry name="initvalue"/><entry name="xmlkey"/><entry name="xmlpath"/><entry name="multiline">0</entry><entry name="multilineIcon">0</entry><entry name="onchangereset"/><entry name="resetable">1</entry></properties></text><dynradiogroup enabled="1" fill="b" focus="0" id="UC4RB_RPM_FAIL_IF_NOT_INSTALLEDs.00" nl="1" quotes="" text="Fail if not installed " tooltip="If set to &apos;yes&apos;, the runbook function fails if the package is not installed." alt="1" required="0"><properties><entry listparam="C" name="reference" reftype="STATIC">PCK.ITPA_SHARED.PRV.VARA.YES_NO</entry><entry name="text">Fail if not installed	</entry><entry name="quotes"/><entry name="id">UC4RB_RPM_FAIL_IF_NOT_INSTALLEDs.00</entry><entry name="enabled">0</entry><entry name="focus">0</entry><entry name="tooltip">If set to &apos;yes&apos;, the runbook function fails if the package is not installed.</entry><entry name="customfield"/><entry name="modifiable">1</entry><entry name="initvalue"/><entry name="xmlkey"/><entry name="xmlpath"/></properties></dynradiogroup><dynradiogroup enabled="1" fill="b" focus="0" id="UC4RB_RPM_IGNORE_DEP_CHECKs.00" nl="1" quotes="" text="Ignore dependency check" tooltip="Don&apos;t check dependencies before uninstalling the packages. Uses the --nodeps flag if parameter set to yes." alt="1" required="0"><properties><entry listparam="C" name="reference" reftype="STATIC">PCK.ITPA_SHARED.PRV.VARA.YES_NO</entry><entry name="text">Ignore dependency check</entry><entry name="quotes"/><entry name="id">UC4RB_RPM_IGNORE_DEP_CHECKs.00</entry><entry name="enabled">0</entry><entry name="focus">0</entry><entry name="tooltip">Don&apos;t check dependencies before uninstalling the packages. Uses the --nodeps flag if parameter set to yes.</entry><entry name="customfield"/><entry name="modifiable">1</entry><entry name="initvalue"/><entry name="xmlkey"/><entry name="xmlpath"/></properties></dynradiogroup><dynradiogroup enabled="1" fill="b" focus="0" id="UC4RB_RPM_NO_SCRIPTSs.00" nl="1" quotes="" text="No script execution" tooltip="Don&apos;t execute the preun/postun scriptlets. This parameter is equivalent to the options &amp;UC4RB_RPM_NO_PREUN_SCRIPT# = yes, &amp;UC4RB_RPM_NO_POSTUN_SCRIPT# = yes, and turns off the execution of the corresponding scriptlets." alt="1" required="0"><properties><entry listparam="C" name="reference" reftype="STATIC">PCK.ITPA_SHARED.PRV.VARA.YES_NO</entry><entry name="text">No script execution</entry><entry name="quotes"/><entry name="id">UC4RB_RPM_NO_SCRIPTSs.00</entry><entry name="enabled">0</entry><entry name="focus">0</entry><entry name="tooltip">Don&apos;t execute the preun/postun scriptlets. This parameter is equivalent to the options &amp;UC4RB_RPM_NO_PREUN_SCRIPT# = yes, &amp;UC4RB_RPM_NO_POSTUN_SCRIPT# = yes, and turns off the execution of the corresponding scriptlets.</entry><entry name="customfield"/><entry name="modifiable">1</entry><entry name="initvalue"/><entry name="xmlkey"/><entry name="xmlpath"/></properties></dynradiogroup><dynradiogroup enabled="1" fill="b" focus="0" id="UC4RB_RPM_NO_PREUN_SCRIPTs.00" nl="1" quotes="" text="No preun-script execution" tooltip="Don&apos;t execute the preun scriptlet. Uses the --nopreun flag if parameter set to yes." alt="1" required="0"><properties><entry listparam="C" name="reference" reftype="STATIC">PCK.ITPA_SHARED.PRV.VARA.YES_NO</entry><entry name="text">No preun-script execution</entry><entry name="quotes"/><entry name="id">UC4RB_RPM_NO_PREUN_SCRIPTs.00</entry><entry name="enabled">0</entry><entry name="focus">0</entry><entry name="tooltip">Don&apos;t execute the preun scriptlet. Uses the --nopreun flag if parameter set to yes.</entry><entry name="customfield"/><entry name="modifiable">1</entry><entry name="initvalue"/><entry name="xmlkey"/><entry name="xmlpath"/></properties></dynradiogroup><dynradiogroup enabled="1" fill="b" focus="0" id="UC4RB_RPM_NO_POSTUN_SCRIPTs.00" nl="1" quotes="" text="No postun-script execution" tooltip="Don&apos;t execute the postun scriptlet. Uses the --nopostun flag if parameter set to yes." alt="1" required="0"><properties><entry listparam="C" name="reference" reftype="STATIC">PCK.ITPA_SHARED.PRV.VARA.YES_NO</entry><entry name="text">No postun-script execution</entry><entry name="quotes"/><entry name="id">UC4RB_RPM_NO_POSTUN_SCRIPTs.00</entry><entry name="enabled">0</entry><entry name="focus">0</entry><entry name="tooltip">Don&apos;t execute the postun scriptlet. Uses the --nopostun flag if parameter set to yes.</entry><entry name="customfield"/><entry name="modifiable">1</entry><entry name="initvalue"/><entry name="xmlkey"/><entry name="xmlpath"/></properties></dynradiogroup><dynradiogroup enabled="1" fill="b" focus="0" id="UC4RB_RPM_NO_TRIGGERSs.00" nl="1" quotes="" text="No trigger script execution" tooltip="Don&apos;t execute the triggerin/triggerun/triggerpostun scriptlets. This parameter is equivalent to the options &amp;UC4RB_RPM_NO_TRIGGER_IN# = yes, &amp;UC4RB_RPM_NO_TRIGGER_UN# = yes, &amp;UC4RB_RPM_NO_TRIGGER_POSTUN# = yes, and turns off the execution of the corresponding scriptlets." alt="1" required="0"><properties><entry listparam="C" name="reference" reftype="STATIC">PCK.ITPA_SHARED.PRV.VARA.YES_NO</entry><entry name="text">No trigger script execution</entry><entry name="quotes"/><entry name="id">UC4RB_RPM_NO_TRIGGERSs.00</entry><entry name="enabled">0</entry><entry name="focus">0</entry><entry name="tooltip">Don&apos;t execute the triggerin/triggerun/triggerpostun scriptlets. This parameter is equivalent to the options &amp;UC4RB_RPM_NO_TRIGGER_IN# = yes, &amp;UC4RB_RPM_NO_TRIGGER_UN# = yes, &amp;UC4RB_RPM_NO_TRIGGER_POSTUN# = yes, and turns off the execution of the corresponding scriptlets.</entry><entry name="customfield"/><entry name="modifiable">1</entry><entry name="initvalue"/><entry name="xmlkey"/><entry name="xmlpath"/></properties></dynradiogroup><dynradiogroup enabled="1" fill="b" focus="0" id="UC4RB_RPM_NO_TRIGGER_UNs.00" nl="1" quotes="" text="No triggerun script execution" tooltip="Don&apos;t execute the triggerun scriptlet. Uses the --notriggerun flag if parameter set to yes." alt="1" required="0"><properties><entry listparam="C" name="reference" reftype="STATIC">PCK.ITPA_SHARED.PRV.VARA.YES_NO</entry><entry name="text">No triggerun script execution</entry><entry name="quotes"/><entry name="id">UC4RB_RPM_NO_TRIGGER_UNs.00</entry><entry name="enabled">0</entry><entry name="focus">0</entry><entry name="tooltip">Don&apos;t execute the triggerun scriptlet. Uses the --notriggerun flag if parameter set to yes.</entry><entry name="customfield"/><entry name="modifiable">1</entry><entry name="initvalue"/><entry name="xmlkey"/><entry name="xmlpath"/></properties></dynradiogroup><dynradiogroup enabled="1" fill="b" focus="0" id="UC4RB_RPM_NO_TRIGGER_POSTUNs.00" nl="1" quotes="" text="No triggerpostun script execution" tooltip="Don&apos;t execute the triggerpostun scriptlet. Uses the --notriggerpostun flag if parameter set to yes." alt="1" required="0"><properties><entry listparam="C" name="reference" reftype="STATIC">PCK.ITPA_SHARED.PRV.VARA.YES_NO</entry><entry name="text">No triggerpostun script execution</entry><entry name="quotes"/><entry name="id">UC4RB_RPM_NO_TRIGGER_POSTUNs.00</entry><entry name="enabled">0</entry><entry name="focus">0</entry><entry name="tooltip">Don&apos;t execute the triggerpostun scriptlet. Uses the --notriggerpostun flag if parameter set to yes.</entry><entry name="customfield"/><entry name="modifiable">1</entry><entry name="initvalue"/><entry name="xmlkey"/><entry name="xmlpath"/></properties></dynradiogroup><text enabled="1" fill="b" focus="0" id="UC4RB_SUDO_PASSWORDs.00" inputassistance="0" len="" nl="1" regex="" required="0" separator=";" showaspassword="1" text="Sudo password" tooltip="Sudo password." upper="0" alt="1" multiline="0" multilineIcon="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant><properties><entry listparam="C" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry><entry name="text">Sudo password</entry><entry name="multiselect">0</entry><entry name="separator">;</entry><entry name="len"/><entry name="quotes"/><entry name="id">UC4RB_SUDO_PASSWORDs.00</entry><entry name="inputassistance">0</entry><entry name="enabled">0</entry><entry name="upper">0</entry><entry name="focus">0</entry><entry name="showaspassword">1</entry><entry name="tooltip">Sudo password.</entry><entry name="customfield"/><entry name="modifiable">1</entry><entry name="regex"/><entry name="required">0</entry><entry name="initvalue"/><entry name="xmlkey"/><entry name="xmlpath"/><entry name="multiline">0</entry><entry name="multilineIcon">0</entry><entry name="onchangereset"/><entry name="resetable">1</entry></properties></text></readpanel></dialog>]]></XUIEDITOR>
+<XUIEDITOR><![CDATA[<dialog height="506" icon="PRPT" id="PRPTS" left="0" top="0" width="420"><readpanel fill="b" id="PRPTBOX" nl="1" scroll="v" text="Parameters"><properties><entry name="text">Parameters</entry><entry name="modifiable">0</entry></properties><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_PACKAGE_NAMEs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Package name " tooltip="Name of the rpm package to remove. Note, this is not the file name." upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+         
+         <properties>
+            <entry listparam="C" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
+            <entry name="text">Package name	</entry>
+            <entry name="multiselect">0</entry>
+            <entry name="separator">;</entry>
+            <entry name="len"/>
+            <entry name="quotes"/>
+            <entry name="id">UC4RB_PACKAGE_NAMEs.00</entry>
+            <entry name="inputassistance">0</entry>
+            <entry name="enabled">0</entry>
+            <entry name="upper">0</entry>
+            <entry name="focus">0</entry>
+            <entry name="showaspassword">0</entry>
+            <entry name="tooltip">Name of the rpm package to remove. Note, this is not the file name.</entry>
+            <entry name="customfield"/>
+            <entry name="modifiable">1</entry>
+            <entry name="regex"/>
+            <entry name="required">1</entry>
+            <entry name="initvalue"/>
+            <entry name="xmlkey"/>
+            <entry name="xmlpath"/>
+            <entry name="multiline">0</entry>
+            <entry name="multilineIcon">0</entry>
+            <entry name="onchangereset"/>
+            <entry name="resetable">1</entry>
+         </properties>
+      </text><dynradiogroup alt="1" enabled="1" fill="b" focus="0" id="UC4RB_RPM_FAIL_IF_NOT_INSTLEDs.00" nl="1" quotes="" text="Fail if not installed " tooltip="If set to &apos;yes&apos;, the runbook function fails if the package is not installed." required="0">
+         <properties>
+            <entry listparam="C" name="reference" reftype="STATIC">PCK.ITPA_SHARED.PRV.VARA.YES_NO</entry>
+            <entry name="text">Fail if not installed	</entry>
+            <entry name="quotes"/>
+            <entry name="id">UC4RB_RPM_FAIL_IF_NOT_INSTLEDs.00</entry>
+            <entry name="enabled">0</entry>
+            <entry name="focus">0</entry>
+            <entry name="tooltip">If set to &apos;yes&apos;, the runbook function fails if the package is not installed.</entry>
+            <entry name="customfield"/>
+            <entry name="modifiable">1</entry>
+            <entry name="initvalue"/>
+            <entry name="xmlkey"/>
+            <entry name="xmlpath"/>
+         </properties>
+      </dynradiogroup><dynradiogroup alt="1" enabled="1" fill="b" focus="0" id="UC4RB_RPM_IGNORE_DEP_CHECKs.00" nl="1" quotes="" text="Ignore dependency check" tooltip="Don&apos;t check dependencies before uninstalling the packages. Uses the --nodeps flag if parameter set to yes." required="0">
+         <properties>
+            <entry listparam="C" name="reference" reftype="STATIC">PCK.ITPA_SHARED.PRV.VARA.YES_NO</entry>
+            <entry name="text">Ignore dependency check</entry>
+            <entry name="quotes"/>
+            <entry name="id">UC4RB_RPM_IGNORE_DEP_CHECKs.00</entry>
+            <entry name="enabled">0</entry>
+            <entry name="focus">0</entry>
+            <entry name="tooltip">Don&apos;t check dependencies before uninstalling the packages. Uses the --nodeps flag if parameter set to yes.</entry>
+            <entry name="customfield"/>
+            <entry name="modifiable">1</entry>
+            <entry name="initvalue"/>
+            <entry name="xmlkey"/>
+            <entry name="xmlpath"/>
+         </properties>
+      </dynradiogroup><dynradiogroup alt="1" enabled="1" fill="b" focus="0" id="UC4RB_RPM_NO_SCRIPTSs.00" nl="1" quotes="" text="No script execution" tooltip="Don&apos;t execute the preun/postun scriptlets. This parameter is equivalent to the options &amp;UC4RB_RPM_NO_PREUN_SCRIPT# = yes, &amp;UC4RB_RPM_NO_POSTUN_SCRIPT# = yes, and turns off the execution of the corresponding scriptlets." required="0">
+         <properties>
+            <entry listparam="C" name="reference" reftype="STATIC">PCK.ITPA_SHARED.PRV.VARA.YES_NO</entry>
+            <entry name="text">No script execution</entry>
+            <entry name="quotes"/>
+            <entry name="id">UC4RB_RPM_NO_SCRIPTSs.00</entry>
+            <entry name="enabled">0</entry>
+            <entry name="focus">0</entry>
+            <entry name="tooltip">Don&apos;t execute the preun/postun scriptlets. This parameter is equivalent to the options &amp;UC4RB_RPM_NO_PREUN_SCRIPT# = yes, &amp;UC4RB_RPM_NO_POSTUN_SCRIPT# = yes, and turns off the execution of the corresponding scriptlets.</entry>
+            <entry name="customfield"/>
+            <entry name="modifiable">1</entry>
+            <entry name="initvalue"/>
+            <entry name="xmlkey"/>
+            <entry name="xmlpath"/>
+         </properties>
+      </dynradiogroup><dynradiogroup alt="1" enabled="1" fill="b" focus="0" id="UC4RB_RPM_NO_PREUN_SCRIPTs.00" nl="1" quotes="" text="No preun-script execution" tooltip="Don&apos;t execute the preun scriptlet. Uses the --nopreun flag if parameter set to yes." required="0">
+         <properties>
+            <entry listparam="C" name="reference" reftype="STATIC">PCK.ITPA_SHARED.PRV.VARA.YES_NO</entry>
+            <entry name="text">No preun-script execution</entry>
+            <entry name="quotes"/>
+            <entry name="id">UC4RB_RPM_NO_PREUN_SCRIPTs.00</entry>
+            <entry name="enabled">0</entry>
+            <entry name="focus">0</entry>
+            <entry name="tooltip">Don&apos;t execute the preun scriptlet. Uses the --nopreun flag if parameter set to yes.</entry>
+            <entry name="customfield"/>
+            <entry name="modifiable">1</entry>
+            <entry name="initvalue"/>
+            <entry name="xmlkey"/>
+            <entry name="xmlpath"/>
+         </properties>
+      </dynradiogroup><dynradiogroup alt="1" enabled="1" fill="b" focus="0" id="UC4RB_RPM_NO_POSTUN_SCRIPTs.00" nl="1" quotes="" text="No postun-script execution" tooltip="Don&apos;t execute the postun scriptlet. Uses the --nopostun flag if parameter set to yes." required="0">
+         <properties>
+            <entry listparam="C" name="reference" reftype="STATIC">PCK.ITPA_SHARED.PRV.VARA.YES_NO</entry>
+            <entry name="text">No postun-script execution</entry>
+            <entry name="quotes"/>
+            <entry name="id">UC4RB_RPM_NO_POSTUN_SCRIPTs.00</entry>
+            <entry name="enabled">0</entry>
+            <entry name="focus">0</entry>
+            <entry name="tooltip">Don&apos;t execute the postun scriptlet. Uses the --nopostun flag if parameter set to yes.</entry>
+            <entry name="customfield"/>
+            <entry name="modifiable">1</entry>
+            <entry name="initvalue"/>
+            <entry name="xmlkey"/>
+            <entry name="xmlpath"/>
+         </properties>
+      </dynradiogroup><dynradiogroup alt="1" enabled="1" fill="b" focus="0" id="UC4RB_RPM_NO_TRIGGERSs.00" nl="1" quotes="" text="No trigger script execution" tooltip="Don&apos;t execute the triggerin/triggerun/triggerpostun scriptlets. This parameter is equivalent to the options &amp;UC4RB_RPM_NO_TRIGGER_IN# = yes, &amp;UC4RB_RPM_NO_TRIGGER_UN# = yes, &amp;UC4RB_RPM_NO_TRIGGER_POSTUN# = yes, and turns off the execution of the corresponding scriptlets." required="0">
+         <properties>
+            <entry listparam="C" name="reference" reftype="STATIC">PCK.ITPA_SHARED.PRV.VARA.YES_NO</entry>
+            <entry name="text">No trigger script execution</entry>
+            <entry name="quotes"/>
+            <entry name="id">UC4RB_RPM_NO_TRIGGERSs.00</entry>
+            <entry name="enabled">0</entry>
+            <entry name="focus">0</entry>
+            <entry name="tooltip">Don&apos;t execute the triggerin/triggerun/triggerpostun scriptlets. This parameter is equivalent to the options &amp;UC4RB_RPM_NO_TRIGGER_IN# = yes, &amp;UC4RB_RPM_NO_TRIGGER_UN# = yes, &amp;UC4RB_RPM_NO_TRIGGER_POSTUN# = yes, and turns off the execution of the corresponding scriptlets.</entry>
+            <entry name="customfield"/>
+            <entry name="modifiable">1</entry>
+            <entry name="initvalue"/>
+            <entry name="xmlkey"/>
+            <entry name="xmlpath"/>
+         </properties>
+      </dynradiogroup><dynradiogroup alt="1" enabled="1" fill="b" focus="0" id="UC4RB_RPM_NO_TRIGGER_UNs.00" nl="1" quotes="" text="No triggerun script execution" tooltip="Don&apos;t execute the triggerun scriptlet. Uses the --notriggerun flag if parameter set to yes." required="0">
+         <properties>
+            <entry listparam="C" name="reference" reftype="STATIC">PCK.ITPA_SHARED.PRV.VARA.YES_NO</entry>
+            <entry name="text">No triggerun script execution</entry>
+            <entry name="quotes"/>
+            <entry name="id">UC4RB_RPM_NO_TRIGGER_UNs.00</entry>
+            <entry name="enabled">0</entry>
+            <entry name="focus">0</entry>
+            <entry name="tooltip">Don&apos;t execute the triggerun scriptlet. Uses the --notriggerun flag if parameter set to yes.</entry>
+            <entry name="customfield"/>
+            <entry name="modifiable">1</entry>
+            <entry name="initvalue"/>
+            <entry name="xmlkey"/>
+            <entry name="xmlpath"/>
+         </properties>
+      </dynradiogroup><dynradiogroup alt="1" enabled="1" fill="b" focus="0" id="UC4RB_RPM_NO_TRIGGER_POSTUNs.00" nl="1" quotes="" text="No triggerpostun script execution" tooltip="Don&apos;t execute the triggerpostun scriptlet. Uses the --notriggerpostun flag if parameter set to yes." required="0">
+         <properties>
+            <entry listparam="C" name="reference" reftype="STATIC">PCK.ITPA_SHARED.PRV.VARA.YES_NO</entry>
+            <entry name="text">No triggerpostun script execution</entry>
+            <entry name="quotes"/>
+            <entry name="id">UC4RB_RPM_NO_TRIGGER_POSTUNs.00</entry>
+            <entry name="enabled">0</entry>
+            <entry name="focus">0</entry>
+            <entry name="tooltip">Don&apos;t execute the triggerpostun scriptlet. Uses the --notriggerpostun flag if parameter set to yes.</entry>
+            <entry name="customfield"/>
+            <entry name="modifiable">1</entry>
+            <entry name="initvalue"/>
+            <entry name="xmlkey"/>
+            <entry name="xmlpath"/>
+         </properties>
+      </dynradiogroup><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_SUDO_PASSWORDs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="1" text="Sudo password" tooltip="Sudo password." upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+         
+         <properties>
+            <entry listparam="C" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
+            <entry name="text">Sudo password</entry>
+            <entry name="multiselect">0</entry>
+            <entry name="separator">;</entry>
+            <entry name="len"/>
+            <entry name="quotes"/>
+            <entry name="id">UC4RB_SUDO_PASSWORDs.00</entry>
+            <entry name="inputassistance">0</entry>
+            <entry name="enabled">0</entry>
+            <entry name="upper">0</entry>
+            <entry name="focus">0</entry>
+            <entry name="showaspassword">1</entry>
+            <entry name="tooltip">Sudo password.</entry>
+            <entry name="customfield"/>
+            <entry name="modifiable">1</entry>
+            <entry name="regex"/>
+            <entry name="required">0</entry>
+            <entry name="initvalue"/>
+            <entry name="xmlkey"/>
+            <entry name="xmlpath"/>
+            <entry name="multiline">0</entry>
+            <entry name="multilineIcon">0</entry>
+            <entry name="onchangereset"/>
+            <entry name="resetable">1</entry>
+         </properties>
+      </text></readpanel></dialog>]]></XUIEDITOR>
 </PROMPTSETXUI>
 <PROMPTSETDATA state="1">
-<DATAEDITOR><![CDATA[<PRPTS ontop="1"><PRPTBOX><UC4RB_PACKAGE_NAMEs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_PACKAGE_NAME#" ReadFromTable="OPSE"></UC4RB_PACKAGE_NAMEs.00><UC4RB_RPM_FAIL_IF_NOT_INSTALLEDs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_RPM_FAIL_IF_NOT_INSTALLED#" ReadFromTable="OPSE">NO</UC4RB_RPM_FAIL_IF_NOT_INSTALLEDs.00><UC4RB_RPM_IGNORE_DEP_CHECKs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_RPM_IGNORE_DEP_CHECK#" ReadFromTable="OPSE">NO</UC4RB_RPM_IGNORE_DEP_CHECKs.00><UC4RB_RPM_NO_SCRIPTSs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_RPM_NO_SCRIPTS#" ReadFromTable="OPSE">NO</UC4RB_RPM_NO_SCRIPTSs.00><UC4RB_RPM_NO_PREUN_SCRIPTs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_RPM_NO_PREUN_SCRIPT#" ReadFromTable="OPSE">NO</UC4RB_RPM_NO_PREUN_SCRIPTs.00><UC4RB_RPM_NO_POSTUN_SCRIPTs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_RPM_NO_POSTUN_SCRIPT#" ReadFromTable="OPSE">NO</UC4RB_RPM_NO_POSTUN_SCRIPTs.00><UC4RB_RPM_NO_TRIGGERSs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_RPM_NO_TRIGGERS#" ReadFromTable="OPSE">NO</UC4RB_RPM_NO_TRIGGERSs.00><UC4RB_RPM_NO_TRIGGER_UNs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_RPM_NO_TRIGGER_UN#" ReadFromTable="OPSE">NO</UC4RB_RPM_NO_TRIGGER_UNs.00><UC4RB_RPM_NO_TRIGGER_POSTUNs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_RPM_NO_TRIGGER_POSTUN#" ReadFromTable="OPSE">NO</UC4RB_RPM_NO_TRIGGER_POSTUNs.00><UC4RB_SUDO_PASSWORDs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_SUDO_PASSWORD#" ReadFromTable="OPSE"></UC4RB_SUDO_PASSWORDs.00></PRPTBOX></PRPTS>]]></DATAEDITOR>
+<DATAEDITOR><![CDATA[<PRPTS ontop="1"><PRPTBOX><UC4RB_PACKAGE_NAMEs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_PACKAGE_NAME#" ReadFromTable="OPSE"></UC4RB_PACKAGE_NAMEs.00><UC4RB_RPM_FAIL_IF_NOT_INSTLEDs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_RPM_FAIL_IF_NOT_INSTLED#" ReadFromTable="OPSE">NO</UC4RB_RPM_FAIL_IF_NOT_INSTLEDs.00><UC4RB_RPM_IGNORE_DEP_CHECKs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_RPM_IGNORE_DEP_CHECK#" ReadFromTable="OPSE">NO</UC4RB_RPM_IGNORE_DEP_CHECKs.00><UC4RB_RPM_NO_SCRIPTSs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_RPM_NO_SCRIPTS#" ReadFromTable="OPSE">NO</UC4RB_RPM_NO_SCRIPTSs.00><UC4RB_RPM_NO_PREUN_SCRIPTs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_RPM_NO_PREUN_SCRIPT#" ReadFromTable="OPSE">NO</UC4RB_RPM_NO_PREUN_SCRIPTs.00><UC4RB_RPM_NO_POSTUN_SCRIPTs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_RPM_NO_POSTUN_SCRIPT#" ReadFromTable="OPSE">NO</UC4RB_RPM_NO_POSTUN_SCRIPTs.00><UC4RB_RPM_NO_TRIGGERSs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_RPM_NO_TRIGGERS#" ReadFromTable="OPSE">NO</UC4RB_RPM_NO_TRIGGERSs.00><UC4RB_RPM_NO_TRIGGER_UNs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_RPM_NO_TRIGGER_UN#" ReadFromTable="OPSE">NO</UC4RB_RPM_NO_TRIGGER_UNs.00><UC4RB_RPM_NO_TRIGGER_POSTUNs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_RPM_NO_TRIGGER_POSTUN#" ReadFromTable="OPSE">NO</UC4RB_RPM_NO_TRIGGER_POSTUNs.00><UC4RB_SUDO_PASSWORDs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_SUDO_PASSWORD#" ReadFromTable="OPSE"></UC4RB_SUDO_PASSWORDs.00></PRPTBOX></PRPTS>]]></DATAEDITOR>
 </PROMPTSETDATA>
 <DOCU_Docu state="1" type="text">
 <DOC/>
