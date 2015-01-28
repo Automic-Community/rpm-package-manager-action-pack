@@ -196,7 +196,7 @@ echo "### end rpm output ###"
 :  IF &output# = 1
 :    SET &cnt# = add(&cnt#, 1)
 !Add new line for output process
-:    SET &RET# = PUT_PROCESS_LINE(&out_var_process#, "&cnt#,&line#", ",")
+:    SET &RET# = PUT_PROCESS_LINE(&out_var_process#, "&cnt#|||&line#", "|||")
 :  ENDIF
 :  IF &line# = "### begin rpm output ###"
 :    SET &output# = 1
