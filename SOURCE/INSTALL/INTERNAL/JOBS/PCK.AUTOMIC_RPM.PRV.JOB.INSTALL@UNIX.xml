@@ -261,19 +261,25 @@
 :endif
 
 :set &host# = ""
-:if &UC4RB_RPM_DOWNLOAD_HOST# <> ""
-:  set &host# = str_cat(&UC4RB_RPM_DOWNLOAD_HOST#, "/")
-:endif
-
+!Reorder concat process, we have to concat host+port first, then "/" symbol <---start
 :if &UC4RB_RPM_DOWNLOAD_PORT# <> 0
 :  set &host# = str_cat(&host#, ":")
 :  set &host# = str_cat(&host#, &UC4RB_RPM_DOWNLOAD_PORT#)
 :endif
 
+:if &UC4RB_RPM_DOWNLOAD_HOST# <> ""
+:  set &host# = str_cat(&UC4RB_RPM_DOWNLOAD_HOST#, "/")
+:endif
+!Reorder concat process, we have to concat host+port first, then "/" symbol --->end
 :set &user# = ""
 :if &UC4RB_RPM_DOWNLOAD_FTP_USER# <> ""
 :  set &user# = &UC4RB_RPM_DOWNLOAD_FTP_USER#
 :  if &UC4RB_RPM_DOWNLOAD_FTP_PWD# <> ""
+!Add password special symbol handling <---start
+:SET &UC4RB_ESCAPED_STRING# = &UC4RB_RPM_DOWNLOAD_FTP_PWD#
+:INC PCK.ITPA_SHARED.PRV.INCLUDE.ESCAPE_URI@UNIX
+:SET &UC4RB_RPM_DOWNLOAD_FTP_PWD# = &UC4RB_ESCAPED_STRING#
+!Add password special symbol handling --->end
 :    set &user# = str_cat(&user#, ":")
 :    set &user# = str_cat(&user#, &UC4RB_RPM_DOWNLOAD_FTP_PWD#)
 :  endif

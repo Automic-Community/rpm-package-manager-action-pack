@@ -153,7 +153,9 @@ if [ $? -eq 0 ]; then
 fi
 
 if echo "$output" | grep -q "package .* is not installed"; then
-: if &UC4RB_RPM_FAIL_IF_NOT_INSTALLED# = "YES"
+!Rename UC4RB_RPM_FAIL_IF_NOT_INSTALLED -> UC4RB_RPM_FAIL_IF_NOT_INSTLED because it's longer than 32 chars <---start
+: if &UC4RB_RPM_FAIL_IF_NOT_INSTLED# = "YES"
+!Rename UC4RB_RPM_FAIL_IF_NOT_INSTALLED -> UC4RB_RPM_FAIL_IF_NOT_INSTLED because it's longer than 32 chars --->end
     echo "Parameter 'Fail if not installed' is set to 'yes' and the package is not installed yet."
     exit 1
 : else
