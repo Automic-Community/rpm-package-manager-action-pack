@@ -1,0 +1,44 @@
+*** Settings ***
+Documentation     NOTE:
+...               add note here
+Suite Setup       Suite Setup
+Force Tags        QUERY    unix
+Test Template     Query All Packages Template
+Resource          ../../resources/keywords.txt
+
+*** Test Cases ***    LIST_OPTION                   FORMAT                                                 RETURN CODE    RETURN STATUS
+Query all with Default value
+                      packages                      ${EMPTY}                                               0              ${ENDED_OK - ended normally}
+                      #Query all with list files
+                      #                             files                                                  ${EMPTY}       0                               ${ENDED_OK - ended normally}
+
+Query all with list config files
+                      config files                  \%{NAME}-\%{VERSION} (platform: \%{DISTRIBUTION})\n    0              ${ENDED_OK - ended normally}
+
+Query all with list doc files
+                      doc files                     ${EMPTY}                                               0              ${ENDED_OK - ended normally}
+
+Query all with list all files by package
+                      all files by package          ${EMPTY}                                               0              ${ENDED_OK - ended normally}
+
+Query all with list all files with states
+                      all files with states         \%{INSTALLTIME}\n                                      0              ${ENDED_OK - ended normally}
+
+Query all with list provides
+                      provides                      ${EMPTY}                                               0              ${ENDED_OK - ended normally}
+
+Query all with list requires
+                      requires                      ${EMPTY}                                               0              ${ENDED_OK - ended normally}
+
+*** Keywords ***
+Query All Packages Template
+    [Arguments]    ${list_option}    ${format}    ${returnCode}    ${returnStatus}
+    Init Action    ${ACTION_QUERY}
+    Action Set    ${PRT_QUERY_SEARCH_CRITERIA}    all packages
+    Action Set    ${PRT_QUERY_LIST_OPTION}    ${list_option}
+    Action Set    ${PRT_QUERY_OUTPUT_FORMAT}    ${format}
+    Action Set Timeout    1800
+    Action Execute
+    Action Report Should Be Found
+    Action Return Code Should Be    ${returnCode}
+    Action Return Status Should Be    ${returnStatus}

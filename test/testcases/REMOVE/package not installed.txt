@@ -1,0 +1,33 @@
+*** Settings ***
+Documentation     NOTE:
+...               add note here
+Suite Setup       Suite Setup
+Force Tags        REMOVE    unix
+Test Template     Remove Template
+Resource          ../../resources/keywords.txt
+
+*** Test Cases ***    FAIL IF NOT INSTALLED INSTALL    IGNORE DEPENDENCY CHECK    NO SCRIPT EXECUTION    NO PREUN-SCRIPT EXECUTION    NO POSTUN-SCRIPT EXECUTION    NO TRIGGER SCRIPT EXECUTION    NO TRIGGERUN SCRIPT EXECUTION    NO TRIGGERPOSTUN SCRIPT EXECUTION    SUDO PASSWORD    RETURN CODE    RETURN STATUS
+Test remove fail      YES                              NO                         NO                     NO                           NO                            NO                             NO                               NO                                   ${EMPTY}         1              ${ENDED_NOT_OK - aborted}
+
+*** Keywords ***
+Remove Template
+    [Arguments]    ${fail_if_not_installed_install}    ${ignore_dependency_check}    ${no_script_execution}    ${no_preun-script_execution}    ${no_postun-script_execution}    ${no_trigger_script_execution}
+    ...    ${no_triggerun_script_execution}    ${no_triggerpostun_script_execution}    ${sudo_password}    ${returnCode}    ${returnStatus}
+    Init Action    ${ACTION_REMOVE}
+    Action Set    ${PRT_REMOVE_PACKAGE_NAME}    ${_SAMPLE_PACKAGE_NAME}
+    Action Execute
+    Init Action    ${ACTION_REMOVE}
+    Action Set    ${PRT_REMOVE_PACKAGE_NAME}    ${_SAMPLE_PACKAGE_NAME}
+    Action Set    ${PRT_REMOVE_RPM_FAIL_IF_NOT_INSTALLED}    ${fail_if_not_installed_install}
+    Action Set    ${PRT_REMOVE_RPM_IGNORE_DEP_CHECK}    ${ignore_dependency_check}
+    Action Set    ${PRT_REMOVE_RPM_NO_SCRIPTS}    ${no_script_execution}
+    Action Set    ${PRT_REMOVE_RPM_NO_PREUN_SCRIPT}    ${no_preun-script_execution}
+    Action Set    ${PRT_REMOVE_RPM_NO_POSTUN_SCRIPT}    ${no_postun-script_execution}
+    Action Set    ${PRT_REMOVE_RPM_NO_TRIGGERS}    ${no_trigger_script_execution}
+    Action Set    ${PRT_REMOVE_RPM_NO_TRIGGER_UN}    ${no_triggerun_script_execution}
+    Action Set    ${PRT_REMOVE_RPM_NO_TRIGGER_POSTUN}    ${no_triggerpostun_script_execution}
+    Action Set    ${PRT_REMOVE_SUDO_PASSWORD}    ${sudo_password}
+    Action Execute
+    Action Report Should Be Found
+    Action Return Code Should Be    ${returnCode}
+    Action Return Status Should Be    ${returnStatus}

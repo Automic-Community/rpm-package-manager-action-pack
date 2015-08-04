@@ -1,0 +1,46 @@
+*** Settings ***
+Documentation     NOTE:
+...               add note here
+Suite Setup       Suite Setup
+Force Tags        QUERY    unix
+Test Template     Query All Packages Template
+Resource          ../../resources/keywords.txt
+
+*** Test Cases ***    NAME    LIST_OPTION              FORMAT      RETURN CODE    RETURN STATUS
+Query all with Default value
+                      name    packages                 ${EMPTY}    0              ${ENDED_OK - ended normally}
+
+Query all with list files
+                      name    files                    ${EMPTY}    0              ${ENDED_OK - ended normally}
+
+Query all with list config files
+                      name    config files             ${EMPTY}    0              ${ENDED_OK - ended normally}
+
+Query all with list doc files
+                      name    doc files                ${EMPTY}    0              ${ENDED_OK - ended normally}
+
+Query all with list all files by package
+                      name    all files by package     ${EMPTY}    0              ${ENDED_OK - ended normally}
+
+Query all with list all files with states
+                      name    all files with states    ${EMPTY}    0              ${ENDED_OK - ended normally}
+
+Query all with list provides
+                      name    provides                 ${EMPTY}    0              ${ENDED_OK - ended normally}
+
+Query all with list requires
+                      name    requires                 ${EMPTY}    0              ${ENDED_OK - ended normally}
+
+*** Keywords ***
+Query All Packages Template
+    [Arguments]    ${name}    ${list_option}    ${format}    ${returnCode}    ${returnStatus}
+    Init Action    ${ACTION_QUERY}
+    Action Set    ${PRT_QUERY_SEARCH_CRITERIA}    triggeredby
+    Action Set    ${PRT_QUERY_SEARCH_BY_NAME}    ${name}
+    Action Set    ${PRT_QUERY_LIST_OPTION}    ${list_option}
+    Action Set    ${PRT_QUERY_OUTPUT_FORMAT}    ${format}
+    Action Set Timeout    1800
+    Action Execute
+    Action Report Should Be Found
+    Action Return Code Should Be    ${returnCode}
+    Action Return Status Should Be    ${returnStatus}
