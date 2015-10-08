@@ -107,7 +107,8 @@
 <PSCRI><![CDATA[:INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.PREPARE_JOB]]></PSCRI>
 </PRE_SCRIPT>
 <SCRIPT mode="1" state="1">
-<MSCRI><![CDATA[:set &name# = ""
+<MSCRI><![CDATA[:INCLUDE PCK.ITPA_SHARED.PUB.INCLUDE.ATTACH
+:set &name# = ""
 :if &UC4RB_SEARCH_CRITERIA# = "all packages"
 :  set &mode# = "-a"
 :else
