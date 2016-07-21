@@ -265,7 +265,6 @@
 <DOCU_Docu state="1" type="text">
 <DOC><![CDATA[Queries packages/files installed on the system. This action is a wrapper around the rpm tool.
 
-
 A temporary variable object (UC4RB_OUT_RPM_QUERY#) will be created to save the result set.  It is used to save the name of the variable object. The variable object stores the resultset as follows: Each line received from the rpm is added as a separate key-value pair in the output variable.
 
 =Samples=
