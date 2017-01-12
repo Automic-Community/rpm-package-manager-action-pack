@@ -7,7 +7,8 @@ Test Template     Remove Template
 Resource          ../../resources/keywords.txt
 
 *** Test Cases ***    FAIL IF NOT INSTALLED INSTALL    IGNORE DEPENDENCY CHECK    NO SCRIPT EXECUTION    NO PREUN-SCRIPT EXECUTION    NO POSTUN-SCRIPT EXECUTION    NO TRIGGER SCRIPT EXECUTION    NO TRIGGERUN SCRIPT EXECUTION    NO TRIGGERPOSTUN SCRIPT EXECUTION    SUDO PASSWORD    RETURN CODE    RETURN STATUS
-Default remove        NO                               NO                         NO                     NO                           NO                            NO                             NO                               NO                                   ${EMPTY}         0              ${ENDED_OK - ended normally}
+Default remove        [Tags]                           SMOKE_TEST
+                      NO                               NO                         NO                     NO                           NO                            NO                             NO                               NO                                   ${EMPTY}         0              ${ENDED_OK - ended normally}
 
 Remove ignore dependency check
                       NO                               YES                        NO                     NO                           NO                            NO                             NO                               NO                                   ${EMPTY}         0              ${ENDED_OK - ended normally}
