@@ -320,7 +320,7 @@ output=`rpm 2>&1 &mode# &allfiles# &excludepath# &excludedocs# &replacefiles# &r
   &ignorearch# &ignoreos# &justdb# &nodigest# &nomanifest# &nosignature# &nodeps# &noorder# &noscripts# \
   &nopre# &nopost# &nopreun# &nopostun# &notriggers# &notriggerin# &notriggerun# &notriggerpostun# &test# \
   &ftpproxy# &ftpport# &httpproxy# &httpport# \
-  &UC4RB_RPM_FILE#`
+  "&UC4RB_RPM_FILE#"`
 
 if [ $? -eq 0 ]; then
   echo "Package successfully installed."
