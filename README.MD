@@ -3,18 +3,19 @@
 
 ###### Description
  
- Hudson is a continuous integration (CI) tool written in Java, which runs in a servlet container, such as Apache Tomcat or the GlassFish application server. It supports SCM tools including CVS,Subversion, Git, Perforce, Clearcase and RTC, and can execute Apache Ant and Apache Maven based projects, as well as arbitrary shell scripts and Windows batch commands.
+ Red Hat Package Manager or RPM Package Manager (RPM) is a package management system.[4] The name RPM variously refers to the .rpm file format, files in this format, software packaged in such files, and the package manager itself. 
+ 
+ RPM was intended primarily for Linux distributions; the file format is the baseline package format of the Linux Standard Base. Even though it was created for use in Red Hat Linux, RPM is now used in many GNU/Linux distributions.
+ 
+ It has also been ported to some other operating systems, such as Novell NetWare (as of version 6.5 SP3) and IBM's AIX (as of version 4). Whereas an RPM typically contains the compiled version of the software, an SRPM contains either the source code corresponding to that RPM or the scripts of a non-compiled software package. Originally standing for Red Hat Package Manager, RPM now stands for "RPM Package Manager”
 
- With this package we automate the triggering of build on Hudson.
  
  ###### Actions
  
- 1. Trigger Build
+ 1. Install
+ 2. Query
+ 3. Remove
  
- ###### Compatibility:
- 
- 1. Oracle JDK 1.7
- 2. Hudson CLI version 3.3.3
 
 ###### Prerequisite:
 
@@ -31,11 +32,11 @@ Ex. **apm upload -force -u <Name>/<Department> -c <Client-id> -H <Host> -pw <Pas
 
 ###### Package/Action Documentation
 
-Please refer to the link for [package documentation](source/ae/DOCUMENTATION/PCK.AUTOMIC_ECLIPSE_HUDSON.PUB.DOC.xml)
+Please refer to the link for [package documentation](source/ae/DOCUMENTATION/PCK.AUTOMIC_RPM.PUB.DOC.xml)
 
 ###### Third party licenses:
 
-The third-party library and license document reference.[Third party licenses](source/ae/DOCUMENTATION/PCK.AUTOMIC_ECLIPSE_HUDSON.PUB.LICENSES.xml)
+The third-party library and license document reference.[Third party licenses](source/ae/DOCUMENTATION/PCK.AUTOMIC_RPM.PUB.LICENSES.xml)
 
 
 ###### Useful References
